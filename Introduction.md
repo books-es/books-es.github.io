@@ -40,10 +40,59 @@ No todo sobre el JAMstack es una idea nueva, pero solo recientemente hemos tenid
 
 Por naturaleza, los sitios JAMstack son los siguientes:
 
-  - Flexible y globalmente distribuido para tráfico intenso.
-  - Centrado en un desarrollo amigable, flujo de trabajo basado en Git.
-  - Diseño modular, consumiendo otros servicios a través de APIs.
-  - Prefabricado y optimizado antes de ser entregado.
+- Flexible y globalmente distribuido para tráfico intenso.
+- Centrado en un desarrollo amigable, flujo de trabajo basado en Git.
+- Diseño modular, consumiendo otros servicios a través de APIs.
+- Prefabricado y optimizado antes de ser entregado.
 
 Es este último punto el que merece atención especial. Piense por un momento sobre el enfoque más común hoy en día para servir contenido web: por cada petición hecha a un sitio web, los datos se extraen de una base de datos, renderizando de nuevo un template, procesado en HTML, y finalmente enviado a través de la red (y tal vez incluso un oceano) al navegador que lo solicitó.
 
+Cuando los servidores web construyen una página por cada petición, se comienza a acumular mucho trabajo en el lugar equivocado en el momento equivocado. Después de todo, una regla general para maximizar el rendimiento es realizar la menor cantidad de pasos posibles. ¿No debería producirce un nuevo HTML sólo cuando cambian los datos o el contenido, y no cada vez que se realiza una petición?
+
+Así es exactamente como funciona el JAMstack. Aquí está lo que sucede bajo el flujo de trabajo del JAMstack:
+
+1. La fuente del sitio es un repositorio alojado que almacena el contenido y el codigo como archivos editables.
+2. Cada vez que se realiza un cambio, se lanza un proceso de construcción que pre-renderiza el sitio, creando el HTML final a partir de templates, contenido y datos.
+3. Los activos preparados y renderizados se publican globalmente sobre un CDN, poniendolos a dispocisión de los usuarios finales tan cerca como sea posible.
+
+Este enfoque elimina grandes cantidades de servidores y latencia de red. Dada la eficiencia y simplicidad de entregar contenido pre-renderizado directamente desde un CDN, no sorprende que sitios JAMstack tiendan a obtener los puntajes más altos en pruebas de velocidad como la de Google Light - el contenido distribuido globalmente no es completamente nuevo, pero la velocidad con la que puede actualizar los archivos del CDN directamente desde un repositorio _es_ nuevo -. No más las temidas demoras, esperando que la caché del CDN caduque - ahora podemos construir sitios altamente distribuidos en el borde de la red y eliminar la necesidad de cualquier tipo de servidores frontend para procesar cada solicitud -.
+
+## Control de Versiones y Despliegues Atómicos
+
+En JAMstack, es posible y común que el contenido del sitio, las publicaciones de blog y todo lo demás, viva en un repositorio Git junto al código y los templates. Esto significa que no se requiere una base de datos de contenido, haciendo que los sitios JAMstack sean más fáciles de configurar, correr, desplegar, ramificar y modificar.
+
+Y en este mundo centrado en el control de versiones de JAMstack, cada despliegue del sitio es _atómico_, haciendo trivial el _rollback_ a cualquier estado, en cualquier momento, por cualquir motivo. Ya no son necesarios escenarios de entornos complejos, ya que la vista previa y los cambios de prueba emplean el sistema de ramificación integrado en el corazón de Git. Con un flujo de trabajo para realizar cambios más rápidos, simples y seguros, la mayoria de los sitios JAMstack están lejos de ser "estáticos" y como mucho se actualizan tan a menudo como sus contrapartes más complejas, a veces cientos de veces al día.
+
+## Contribuyendo al JAMstack
+
+Cuando se imagina un flujo de trabajo JAMstack, probablemente se imagine haciendo cambios de código en un editor y luego ejecutando un comando para construir el sitio y desplegarlo en producción. Un poco del desarrollo en JAMstack sucede exactamente de esta manera, especialmente al principio.
+
+Pero para la mayoria de los sitios JAMstack, los contribuyentes no son sólo desarrolladores. Las nuevas actualizaciones del sitio también son lanzadas por los autores de contenido que utilizan un CMS , asi como por acciones automatizadas, tal como se esperaría de cualquier sitio web moderno.
+
+En lugar de producirse localmente, el proceso de compilación ahora se ejecuta sobre un servidor alojado en la nube. Suba un cambio a GitHub (o cualquier otro servicio de repositorio) y se lanza automaticamente una nueva compilación en servidores de propósito general, enviando el resultado final directamente al CDN. Es una forma increiblemente adictiva de desarrollar, y le mostramos como hacerlo funcionar. Pero, ¿qué pasa con los autores que no son desarrolladores y podrían no familiarizarse con Git? El JAMstack ha generado una nueva generación inteligente de herramientas de autoria que se ven y funcionan como un Sistema de Gestión de Contenidos (_CMS Content Management System_) normal, pero que en realidad verifica los cambios en el control de versiones detrás de escenas. De esta manera, todos los participantes en el mismo flujo de trabajo, disfrutan de la seguridad, ramificación y rollbacks del software de control de versiones moderno - incluso si no son concientes de lo que está sucediendo -. Es una buena mejora sobre el contenido que requiere una base de datos que necesita administrar y versionar el mismo por separado.
+
+También puede aportar cambios en el sitio de una tercera manera: mediante programación, a través de la automatización. Por ejemplo, puede ejecutar un script diario que incorpora los últimos articulos de prensa y menciones de Twitter en la página de inicio. O captar lo que sucede en un sitio JAMstack de _Smashing Magazine_: cada vez que un usuario comenta sobre un artículo, una simple función publica el comentario en el repositorio del sitio y lanza una nueva compilación (siempre que el comentario supere una cierta moderación).
+
+¿Comienza a ver el poder de este flujo de trabajo? Los desarrolladores, los autores de contenido y los procesos automatizados están guardando una historia viva del sitio directamente en el mismo lugar - el repositorio - que actua como una fuente de verdad. Incluso si el sitio se actualiza cientos de veces o más, cada estado se conserva. Y, lo más importante, el sitio se mantiene rápido y _responsive_, dado que cada página se construye y optimiza antes de ser entregada.
+
+## APIs para procesamiento y personalización
+
+Sin embargo, se necesita más que HTML: las aplicaciones web necesitan realizar trabajo y tener estado. Tradicionalmente, se requerian servidores web para almacenar una sesión de usuario y permitir a la aplicacion hacer cosas como recordar artículos en un carrito de compras o mejorar la experiencia de pago.
+
+En el JAMstack, estas experiencias personalizadas se realizan utilizando JavaScript para hacer llamadas a APIs que envian y reciven datos. La mayoria de las APIs utilizadas son servicios tercerizados. _Stripe_, por ejemplo, es un servicio popular para procesar pagos. _Algolia_ es un API popular para potenciar búsquedas. (Sus autores tienen un profundo amor por casi toda la tecnología, pero nunca volverían a manejar pagos de forma manual ni ejecutar clusteres de búsqueda en Apache Solr.)
+
+Otras APIs pueden ser funciones personalizadas de forma exclusiva para cada aplicación. En lugar de un _framework_ monolítico y complejo que administra todo, los sitios pueden diseñarse al rededor de microservicios: funciones simples que ejecutan tareas específicas, ejecutándose una sola vez cuando se solicitan y luego terminan de forma limpia. Es un enfoque muy escalable sobre el que es fácil razonar.
+
+Pero sin servidores para almacenar sesiones de usuario, ¿cómo hacemos para conectar todas estas llamadas discretas a la API? ¿Cómo hacemos para manejar autenticación e identificación? Para gestionar cuentas de usuario, una aplicación JAMstack a menudo creará un token ID de seguridad almacenado en el navegador. (Este tipo de token se denomina _JavaScript Web Token_, o _JWT_). Luego, se pasa la identidad con cada llamada a la API para que los servicios reconozcan al usuario. Cubriremos este tema con mayor detalle más adelante, pero lo introduciomos aquí para ayudarlo a entender el poder de la plataforma. Los sitios JAMstack pueden hacer mucho más que servir contenido simple, y muchas son aplicaciones costosas con todas las caracteristicas que esperaría, como _ecommerce_ (comercio electrónico), _membership_ (membresía) y _rich personalization_ (personalización).
+
+Los sitios estáticos pueden ser, pues, estáticos, pero encontrará que los sitios JAMstack son cualquier cosa menos estáticos. De hecho, encontrará markup pre-renderizado para _UI_ (_User Interface_ - interfaz de usuario -) web combinado con APIs y microservicios para ser una de las plataformas más rápidas y eficientes disponibles para aplicaciones web avanzadas.
+
+## Produciendo todo junto: Un caso de estudio de _Smashing Magazine_
+
+_Smashing Magazine_ ha sido uno presencia constante en el desarrollo web por más de una decada, brindando un sitio web de gran popularidad y publicando contenido de alta calidad sobre temas como desarrollo frontend, diseño, experiencia de usuario y rendimiento web.
+
+A finales de 2017, _Smashing Magazine_ reescribió y rediseñó completamente su sitio para cambiar de un sistema basado en varias aplicaciones monolíticas tradicionales a el JAMstack. La sección final del libro muestra como resolver desafíos como ecommerce, gestión de contenido, comentarios, subscripciones y el trabajo con un proyecto JAMstack a escala.
+
+## ¿Listo? Hora de comenzar con nuestra sesión JAM
+
+La mejor forma de aprender el JAMstack es sumergiendose en él. El JAMstack utiliza habilidades que ya posee, pero aplica tus convenciones sobre cómo se ejecutan los sitios web y qué es posible sin servidores. Le sugerimos que traiga la mente abierta y el mismo sentido de aventura que lo llevó a explorar el desarrollo web la primera vez. Nunca ha habido un mejor momento para ser un desarrollador web - liberarnos de la administración de sitios web está trayendo de vuelta el foco a la creación de contenido e interfaces que lo hacen atrayentes -.
