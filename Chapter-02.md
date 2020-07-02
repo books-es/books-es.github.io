@@ -114,4 +114,28 @@ Inicialmente, Ajax se usó principalmente con principios como la mejora progresi
 
 Los verdaderos SPA surgieron cunado el rendimiento de JavaScript se volvió lo suficientemente bueno como para que pudieramos invertir el modelo existente y manejar todas las transiciones de página directamente en el navegador sin ningún viaje de ida y vuelta dentro del servidor. La primera generación de SPAs se construyó típicamente desarrollando un frontend dentro de grandes aplicaciones monolíticas impulsadas por bases de datos, Era común trabajar sobre stacks con frontends Ember dentro de aplicaciones Rails, utilizando la canalización de activos de Rails para agrupación y minificación (incluso si este flujo era, en general, doloroso de trabajar). 
 
-Las SPAs modernas comenzaron a separar completamente el frontend y el backend, y toda una nueva generación de herramientas de compilación frontend surgieron para que trabajar con el frontend de manera aislada sea realmente divertido - luego de la instalación inicial y los obstáculos de configuración hayan sido superados, por supuesto -.
+Las SPAs modernas comenzaron a separar completamente el frontend y el backend, y toda una nueva generación de herramientas de compilación frontend surgieron para que trabajar con el frontend de manera aislada sea realmente divertido - luego de la instalación inicial y los obstáculos de configuración hayan sido superados, por supuesto -. Webpack es la herramienta de compilación más utilizada por las SPAs de hoy, ofreciendo un flujo que soporta transpilación JavaScript y CSS, postprocesamiento, paquetes integrados y división de código, así como actualización del navegador en tiempo real en cada guardado.
+
+### Propiedades Web Extensas
+
+Cuando se trata de markup precompilado, existen restricciones obvias en términos del número de páginas que es práctico generar. El ciclo de construcción e implementación simplemente se vuelve demasiado largo para permitir un flujo de trabajo viable. Si necesita publicar una historia antes que un competidor, pero tiene un ciclo de construcción e implementación de una hora entre el momento en que presiona publicar en su CMS y el momento en que la historia cobra visibilidad, tu stack te ha decepcionado.
+
+Para algunos tipos de publicaciones, esta es una restricción tan extricta que incluso un ciclo de construcción e implementación de unos 10 minutos trabajaría mejor en otro stack.
+
+Sin embargo, las herramientas de compilación se han vuelto sorprendentemente rápidas y el límite de lo que pueden alcanzarse en un ciclo de construcción se reduce. Un generador de sitios estáticos como Hugo puede procesar cientos de páginas por segundo y proporcionar ciclos de construcción mucho más rápidos. Estas impresionantes mejoras en estas herramientas, junto con técnicas emergentes para abordar sitios muy grandes dividiendo cuidadosamente la generación de sitios en ramas separadas tal que solo un pequeño subconjunto de los sitios se reconstruye en cada actualización, se combinan para crear grandes resultados.
+
+Al final, el _trade-off_ necesitará basarse en qué es más importante: el rendimiento, el tiempo de actividad y la escalabilidad, o la reducción del ciclo de publicación.
+
+Para la mayoria de los sitios basados en contenido, siempre que se pueda programar una implementación para que se active en un momento determinado, es probable que la capacidad de ejecutar un ciclo de construcción en menos de 10 minutos no sea realmente importante. A menos que su sitio sea verdaderamente gigantesco (páginas contadas en millones en lugar de cientos), un enfoque JAMstack podría ser una opción más viable de lo que alguna vez hubiera pensado.
+
+### Experiencias Híbidas
+
+Es común que una compañía requiera una variedad de experiencias web: un sitio web principal, un blog, un sitio de documentación, una aplicación web, una tienda de ecommerce, etcétera. Mantener una apariencia común en todas estas aplicaciónes utilizadas solia ser extremadamente desafiante para los equipos de desarrollo. Esto es porque en las arquitecturas tradicionales, el frontend de cada aplicación está estrechamente acoplado al backend utilizado para generarlo en el servidor.
+
+El JAMstack resuelve esto de una forma elegante y altamente escalable. Podemos construir un frontend desacoplado que abarque todas las aplicaciónes. Verá esto en acción más adelante cuando presentemos el caso de estudio de _Smashing Magazine_.
+
+## Resumen
+
+La lista de proyectos que no serían adecuados para una arquitectura JAMstack se está reduciendo continuamente. Las mejoras en las herramientas y la automatización, los flujos de trabajo, las mejores prácticas y el ecosistema en su conjunto está creando más posibilidades de lo que puede lograr un sitio JAMstack.
+
+Ahora que hemos cubierto qué es el JAMstack y si es adecuado para su proyecto, es tiempo de hablar sobre lo que puede proporcionar el enfoque JAMstack.
