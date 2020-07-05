@@ -1,3 +1,8 @@
+---
+layout: page
+permalink: /jamstack/chapter-02
+---
+
 ## **Capítulo #2**
 
 # Introducción al JAMstack

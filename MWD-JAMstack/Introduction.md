@@ -1,3 +1,7 @@
+---
+layout: page
+permalink: /jamstack/introduction
+---
 # Introducción
 
 Hace unos pocos años atras, una gran ráfaga de avances han fortalecido la web, como plataforma de contenido y aplicación. Los navegadores son mucho más poderosos. JavaScript ha madurado. WebAssembly está en el orizonte. Ciertamente, se siente como el comienzo de un nuevo capítulo para la web. Probablemente lo sientas como cuando presenciaste la explosión de los nuevos _frameworks frontend_ y los servicios basados en API.

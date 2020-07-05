@@ -1,3 +1,8 @@
+---
+layout: page
+permalink: /jamstack/chapter-01
+---
+
 ## **Capítulo #1**
 
 # Los Desafíos del Desarrollo Web Moderno
