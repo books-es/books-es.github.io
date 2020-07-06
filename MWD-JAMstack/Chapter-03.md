@@ -1,3 +1,8 @@
+---
+layout: default
+permalink: /jamstack/chapter-03
+---
+
 ## **Capítulo #3**
 
 # Ventajas del JAMstack

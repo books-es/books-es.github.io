@@ -22,5 +22,7 @@ permalink: /jamstack
 
 **Indice**
 
-- [Introducción](introduction)
-- [Capítulo #1](chapter-01)
+- [Introducción](/jamstack/introduction)
+- [Capítulo #1](/jamstack/chapter-01)
+- [Capítulo #2](/jamstack/chapter-02)
+- [Capítulo #3](/jamstack/chapter-03)

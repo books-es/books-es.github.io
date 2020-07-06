@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 permalink: /jamstack/chapter-02
 ---
 
