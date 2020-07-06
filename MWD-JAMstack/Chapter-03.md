@@ -1,4 +1,5 @@
 ---
+title: none
 layout: default
 permalink: /jamstack/chapter-03
 ---
