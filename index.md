@@ -1,6 +1,6 @@
 ---
-layout: default
-permalink: /
+title: Home
+layout: home
 ---
 <h1>Books ES</h1>
 
