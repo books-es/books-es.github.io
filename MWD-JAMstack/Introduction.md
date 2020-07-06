@@ -1,5 +1,4 @@
 ---
-title: none
 layout: default
 permalink: /jamstack/introduction
 ---
