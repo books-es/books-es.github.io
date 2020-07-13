@@ -17,7 +17,7 @@ A menos que encontremos formas de construir _firewalls_ sólido entre las difere
 
 Afortunadamente, el JAMstack crea varios firewalls de este tipo para gestionar la complejidad y centrar la atención en partes más pequeñas de forma aislada.
 
-### Mejor comprensión y agilidad mental
+### **Mejor comprensión y agilidad mental**
 
 Con el renderizado del lado del servidor, todas las capas del stack siempre están involucradas en cualquiera de las peticiones que un usuario hace a un sitio o aplicación. Para construir software eficiente y seguro, los desarrolladores deben comprender a fondo todas las capas por las que flujen de peticiones, incluyendo los complementos de terceros, los controladores de base de datos y los detalles de implementación de los lenguajes de programación.
 
@@ -29,7 +29,7 @@ Esto nos ayuda a establecer modelos mentales más claros del sistema como un tod
 
 No hay necesidad de entender las caracteristicas del runtime de JavaScript en diferentes navegadores, así como los flujos de un API al mismo tiempo.
 
-### No necesita ser un experto en todo
+### **No necesita ser un experto en todo**
 
 En los últimos años, la complejidad de las arquitecturas frontend ha explotado, a medida que las APIs del navegador han evolucionado y los estándares HTML y CSS han crecido. Sin embargo, es muy difícil para la misma persona ser un experto en rendimiento de JavaScript del lado del cliente y desarrollado del lado del servidor, en restricciones de consultas a base de datos, en optimización de caché y en operaciones de infraestructuras.
 
@@ -39,7 +39,7 @@ Y con microservicios muy pequeños y bien enfocados, la capa de servicio se vuel
 
 Esto significa que estamos viendo un ecosistema mucho más amplio de APIs prefabricadas para autenticación, comentarios, comercion electrónico, búsqueda, rendimensionamiento de imágenes, etcétera. Podemos utilizar herramientas de terceros para externalizar la complejidad y estar tranquilos sabiendo que esos proveedores tienen equipos altamente especializados enfocados exclusivamente en su espacio de problemas.
 
-### Reducir las partes móviles en tiempo de ejecución
+### **Reducir las partes móviles en tiempo de ejecución**
 
 Cuanto más podamos preconstruir, más podremos implementar como markup prefabricado sin necesidad de ejecutar código dinámico en nuestros servidores durante el ciclo de petición, y estaremos mucho mejor. Ejecutar código cero siempre será más rápido que ejecutar algo de código. El código cero siempre será más seguro que incluso la cantidad más pequeña de código. Los activos que pueden servirse sin partes móviles siempre será mucho más escalable que incluso el programa dinámico más optimizado.
 
@@ -49,3 +49,29 @@ El único motivo para ejecutar código del lado del servidor en tiempo de petici
 
 ## Costos
 
+Hay una variedad de costos asociados con el diseño, desarrollo y operación de aplicaciones y sitios web, y están indudablemente influenciados por el stack que escogimos. Aunque los costos financieros a menudo resultan más obvios, deberíamos considerar los costos para la experiencia, creatividad e innovación del desarrollador.
+
+### **Costos financieros**
+
+Cualquier proyecto de desarrollo web de escala significativa probablemente incluirá un ejercicio para estimar los niveles de tráfico previstos u objetivo y de un plan para la infraestructura de alojamiento requerida para servir este tráfico. Este ejercicio de planificación de capacidad es un paso importante para determinar cuanto costará operar el sitio. Es difícil de estimar cuanto tráfico recibirá un sitio antes de tiempo, por lo que es una práctica común planificar la capacidad suficiente para satisfacer los niveles de tráfico más allá incluso de las estimaciones más altas.
+
+Con las arquitecturas tradicionales, en las que las peticiones de página pueden requerir actividad en todos los niveles del stack, esa capacidad deberá extenderse a través de cada nivel, lo que a menudo resulta en servidores múltiples y altamente específicos de base de datos, servidores de aplicación, servidores de caché, balanceadores de carga, pilas de mensajes y más. Cada una de estas piezas de infraestructura tiene un costo financiero asociado. Anteriormente, esto podría haber incluido los costos de las máquinas físicas, pero hoy estas máquinas a menudo estan virtualizadas. Ya sea física o virtual, los costos financieros de estas piezas de infraestructura pueden aumentar con las licencias de software, costos de máquina, mano de obra, etcétera.
+
+Además, la mayoria de los proyectos de desarrollo web tendrán más de un entorno, lo que significa que mucha de esa infraestructura necesitará duplicarse para proporcionar entornos adecuados de puesta en marcha, pruebas y desarrollo, además del entorno de producción.
+
+Los sitios JAMstack se benefician de una arquitectura técnica mucho más simple. La carga de escalar un sitio JAMstack para satisfacer grandes picos de tráfico generalmente recae en el Content Delivery Network (CDN) que da servicio a los activos del sitios. Incluso si no emplearamos los servicios de un CDN, nuestro entorno de alojamiento aún se simplificaría drásticamente en comparación con el escenario mencionado anteriormente. Cuando el proceso de acceder al contenido y los datos y luego rellenar los templates de página se desacopla de las peticiones de estas páginas, significa que las demandas de estas partes de la infraestructur no influyen en el cantidad de visitantes al sitio. Grandes partes de la infraestructura tradicional no necesitan escalarse o quizás no tienen la necesidad de existir.
+
+El JAMstack reduce _drásticamente_ los costos financieros de construcción y mantenimiento de aplicaciones y sitios web.
+
+### **Eficiencia del Equipo**
+
+El tamaño y la complejidad de la arquitectura de un proyecto es directamente proporcional a la candidad de personas y el rango de habilidades (_skills_) requiridas para operarlo. Una arquitectura simplificada con menos servidores requieren menos personas y mucho menos especialización.
+
+Las tareas complejas de DevOps se eliminan en gran medida de los projectos con entornos mucho más simples. 
+
+
+
+<!-- ## Escalado -->
+<!-- ## Rendimiento -->
+<!-- ## Seguridad -->
+<!-- ## Por el Desarrollador; Por el Proyecto; Por la Victoria -->
