@@ -67,7 +67,20 @@ El JAMstack reduce _drásticamente_ los costos financieros de construcción y ma
 
 El tamaño y la complejidad de la arquitectura de un proyecto es directamente proporcional a la candidad de personas y el rango de habilidades (_skills_) requiridas para operarlo. Una arquitectura simplificada con menos servidores requieren menos personas y mucho menos especialización.
 
-Las tareas complejas de DevOps se eliminan en gran medida de los projectos con entornos mucho más simples. 
+Las tareas complejas de DevOps se eliminan en gran medida de los projectos con entornos mucho más simples. Lo que antes eran procedimientos largos, costosos y críticos - como proporcionar nuevos entornos y configurarlos para replicarse fielmente - son reemplazados por el mantenimiento los entornos de desarrollo locales (requeridos con un enfoque tradicional, de todos modos) y el pipeline de despliegue para un servicio de hosting estático productivo o CDN.
+
+Este cambio coloca mucho más poder y control en manos de los desarrolladores, quienes poseen un conjunto cada vez más extenso de habilidades de desarrollo web. Esto reduce los costos de personal en un projecto de desarrollo web (mediante una redicida demanda de algunas de las habilidades más exóticas e historicamente costosas) e incrementa la productividad de los desarrolladores empleados. Al tener conocimientos de una gran parte del stack y menos límites disciplinarios que cruzar, el proceso*** mental del proyecto de cada desarrollador puede ser más completo y, como resultado, cada individuo puede tener mucha más confianza en sus acciones y ser más productivo.
+
+Esto también reduce los límites para la innovación y la iteración.
+
+
+### **El Precio de la Innovación**
+
+Cuando hacemos cambios en un sitio, queremos estar seguros de los efectos que nuestros cambios podrían tener en el resto del sistema.
+
+El JAMstack toma las ventajas de las APIs y un arquitectura de servicios bien definida con capas de interfaz establecidas, moviendonos a un sistema que adopta el mantra de "piezas pequeñas, unidas libremente" (_"small pieces, loosely joined"_). Este modelo de acoplamiento libre entre diferentes partes de la arquitectura técnica de un sitio reduce las barreras de cambiar con el tiempo. Esto puede ser liberador cuando se trata de tomar desiciones técnicas de diseño porque es menos probable que estemos bloqueados por un proveedor o servicio tercerizado, dado que tenemos límites y responsabilidades bien definidasen todo el sitio.
+
+Esto también otorga a los equipos de desarrollo la libertad para refactorizar y desarrollar las partes particulares del sitio que controlan, seguros sabiendo de que mientras respeten la estructura de las interfaces entre las diferentes partes del sitio, no comprometerán el proyecto más grande.
 
 
 
